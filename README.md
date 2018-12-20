@@ -1,15 +1,18 @@
 ### Date created
-Include the date you created this project and README file.
+12-20-2018
 
 ### Project Title
-Replace the Project Title
+Project 3 of PDSND: Post your Work on GitHub
 
 ### Description
-Describe what your project is about and what it does
+The documentation, readability and efficiency of my bikeshare_2_solution.py file
+is improved using different branches for documentation and code improvement.
 
 ### Files used
-Include the files used
+README.md
+.gitignore
+bikeshare_2_solution.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+https://github.com/udacity/pdsnd_github was used as original repository to
+create a fork in my GitHub account. 
