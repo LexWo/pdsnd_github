@@ -23,7 +23,8 @@ def input_error_check(user_input, option_list, option):
     # If user input was not correct, possible options are shown and user is
     # prompted to choose an option
     while user_input not in option_list:
-        print('Ups, your input was not recognized. Your options for {} are:'.format(option))
+        print('Ups, your input was not recognized. Your options for {} are:'\
+        .format(option))
         for i in range(len(option_list)):
             print(option_list[i])
         if option == 'filter':
@@ -48,26 +49,30 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city_list = ['Chicago', 'New York City', 'Washington']
-    city = input('Would you like to see data for Chicago, New York City, or Washington?\n').title()
+    city = input('Would you like to see data for Chicago, New York City, or \
+    Washington?\n').title()
 
     # check if input is a listed city
     city = input_error_check(city, city_list, 'city')
 
     # get user input for filter options (month, day, both, none).
     filter_options = ('month', 'day', 'both', 'none')
-    filter = input('Would you like to filter the data? Available options are "month", "day", "both", or "none" for no filter.\n').lower()
+    filter = input('Would you like to filter the data? Available options are \
+    "month", "day", "both", or "none" for no filter.\n').lower()
 
     # check if input is a listed filter option
     filter = input_error_check(filter, filter_options, 'filter')
 
     month_list = ('January', 'February', 'March', 'April', 'May', 'June')
-    day_list = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
+    day_list = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', \
+    'Saturday', 'Sunday')
 
     # if filter option month was chosen, user is asked to input a month for the
     # filter, day is set to 'all'
     if filter == 'month':
         # get user input for month (January, February, ... , June)
-        month = input('Which month would you like to see - January, February, March, April, May, or June?\n').title()
+        month = input('Which month would you like to see - January, February, \
+        March, April, May, or June?\n').title()
         # check if input is a listed month
         month = input_error_check(month, month_list, 'month')
 
@@ -77,7 +82,8 @@ def get_filters():
     # filter, month is set to 'all'
     elif filter == 'day':
         # get user input for day of week (Monday, Tuesday, ... Sunday)
-        day = input('Which day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday?\n').title()
+        day = input('Which day - Monday, Tuesday, Wednesday, Thursday, Friday, \
+        Saturday, or Sunday?\n').title()
         # check if input is a listed day of week
         day = input_error_check(day, day_list, 'day')
 
@@ -86,12 +92,14 @@ def get_filters():
     # day for the filter
     elif filter == 'both':
         # get user input for month (January, February, ... June)
-        month = input('Which month would you like to see - January, February, March, April, May, or June?\n').title()
+        month = input('Which month would you like to see - January, February, \
+        March, April, May, or June?\n').title()
         # check if input is a listed month
         month = input_error_check(month, month_list, 'month')
 
         # get user input for day of week (Monday, Tuesday, ... Sunday)
-        day = input('Which day would you like to see - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday?\n').title()
+        day = input('Which day would you like to see - Monday, Tuesday, \
+        Wednesday, Thursday, Friday, Saturday, or Sunday?\n').title()
         # check if input is a listed day of week
         day = input_error_check(day, day_list, 'day')
 
@@ -192,25 +200,29 @@ def total_avg_trip(df, column_calc, column_sort, sort_by, option):
 def time_stats(df, city, month, day):
     """Displays statistics on the most frequent times of travel."""
 
-    print('\nCalculating The Most Frequent Times of Travel for {} filtered by month = {} and day = {}...\n'.format(city.title(), month, day))
+    print('\nCalculating The Most Frequent Times of Travel for {} filtered by \
+    month = {} and day = {}...\n'.format(city.title(), month, day))
     start_time = time.time()
 
     # display the most common month (mcm) and total number of trips
     month_list = ('January', 'February', 'March', 'April', 'May', 'June')
     mcm = mode_count(df, 'month', 'mode')
     mcm_count = mode_count(df, 'month', 'count')
-    print('The most common month: {} with a total of {} rentals.'.format(month_list[mcm-1], mcm_count))
+    print('The most common month: {} with a total of {} rentals.'\
+    .format(month_list[mcm-1], mcm_count))
 
     # display the most common day of week (mcw) and total number of trips
     mcd = mode_count(df, 'day_of_week', 'mode')
     mcd_count = mode_count(df, 'day_of_week', 'count')
-    print('The most common day: {} with a total of {} rentals.'.format(mcd, mcd_count))
+    print('The most common day: {} with a total of {} rentals.'\
+    .format(mcd, mcd_count))
 
 
     # display the most common start hour (mch) and total number of trips
     mch = mode_count(df, 'hour', 'mode')
     mch_count = mode_count(df, 'hour', 'count')
-    print('The most common hour: {} with a total of {} rentals.'.format(mch, mch_count))
+    print('The most common hour: {} with a total of {} rentals.'\
+    .format(mch, mch_count))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -219,24 +231,31 @@ def time_stats(df, city, month, day):
 def station_stats(df, city, month, day):
     """Displays statistics on the most popular stations and trip."""
 
-    print('\nCalculating The Most Popular Stations and Trip for {} filtered by month = {} and day = {}...\n'.format(city.title(), month, day))
+    print('\nCalculating The Most Popular Stations and Trip for {} filtered by \
+    month = {} and day = {}...\n'.format(city.title(), month, day))
     start_time = time.time()
 
     # display most commonly used start station (mcsst), total number of trips,
     # total trip duration and average trip duration
     mcsst = mode_count(df, 'Start Station', 'mode')
     mcsst_count = mode_count(df, 'Start Station', 'count')
-    total_trip = total_avg_trip(df, 'Trip Duration', 'Start Station', mcsst, 'total')
-    avg_trip = total_avg_trip(df, 'Trip Duration', 'Start Station', mcsst, 'avg')
-    print('The most commonly used start station: {}\n...total trip count: {} \n...average trip duration: {}s \n...total trip duration: {}s \n'.format(mcsst, mcsst_count, int(avg_trip), int(total_trip)))
+    total_trip = total_avg_trip(df, 'Trip Duration', 'Start Station', mcsst, \
+    'total')
+    avg_trip = total_avg_trip(df, 'Trip Duration', 'Start Station', mcsst, \
+    'avg')
+    print('The most commonly used start station: {}\n...total trip count: {} \
+    \n...average trip duration: {}s \n...total trip duration: {}s \n'\
+    .format(mcsst, mcsst_count, int(avg_trip), int(total_trip)))
 
-    # display most commonly used end station (mcest), total number of trips,
-    # total trip duration and average trip duration
+    # display most commonly used end station (mcest), total number of trips, total trip duration and average trip duration
     mcest = mode_count(df, 'End Station', 'mode')
     mcest_count = mode_count(df, 'End Station', 'count')
-    total_trip = total_avg_trip(df, 'Trip Duration', 'End Station', mcest, 'total')
+    total_trip = total_avg_trip(df, 'Trip Duration', 'End Station', mcest, \
+    'total')
     avg_trip = total_avg_trip(df, 'Trip Duration', 'End Station', mcest, 'avg')
-    print('The most commonly used end station: {} \n...total trip count: {} \n...average trip duration: {}s \n...total trip duration: {}s \n'.format(mcest, mcest_count, int(avg_trip), int(total_trip)))
+    print('The most commonly used end station: {} \n...total trip count: {} \
+    \n...average trip duration: {}s \n...total trip duration: {}s \n'\
+    .format(mcest, mcest_count, int(avg_trip), int(total_trip)))
 
 
     # display most frequent route (mcf) from start to end station, total number
@@ -246,7 +265,9 @@ def station_stats(df, city, month, day):
     mfr_count = mode_count(df, 'Route', 'count')
     total_trip = total_avg_trip(df, 'Trip Duration', 'Route', mfr, 'total')
     avg_trip = total_avg_trip(df, 'Trip Duration', 'Route', mfr, 'avg')
-    print('The most frequent route: {} \n...total count: {} \n...average trip duration: {}s \n...total trip duration: {}s \n'.format(mfr, mfr_count, int(avg_trip), total_trip))
+    print('The most frequent route: {} \n...total count: {} \n...average trip \
+    duration: {}s \n...total trip duration: {}s \n'.format(mfr, mfr_count, \
+    int(avg_trip), total_trip))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -255,7 +276,8 @@ def station_stats(df, city, month, day):
 def trip_duration_stats(df, city, month, day):
     """Displays statistics on the total and average trip duration."""
 
-    print('\nCalculating Trip Statistics for {} filtered by month = {} and day = {}...\n'.format(city.title(), month, day))
+    print('\nCalculating Trip Statistics for {} filtered by month = {} and day \
+    = {}...\n'.format(city.title(), month, day))
     start_time = time.time()
 
     # display total travel time
@@ -277,7 +299,8 @@ def trip_duration_stats(df, city, month, day):
 def user_stats(df, city, month, day):
     """Displays statistics on bikeshare users."""
 
-    print('\nCalculating User Stats for {} filtered by month = {} and day = {}...\n'.format(city.title(), month, day))
+    print('\nCalculating User Stats for {} filtered by month = {} and day = {}\
+    ...\n'.format(city.title(), month, day))
     start_time = time.time()
 
     # Display counts of user types
@@ -287,7 +310,8 @@ def user_stats(df, city, month, day):
     # Output for user that for Washington no gender and year of birth data is
     # available
     if city == 'Washington':
-        print('Sorry, no gender and year of birth data available for {}.'.format(city.title()))
+        print('Sorry, no gender and year of birth data available for {}.'\
+        .format(city.title()))
 
     # Display counts of gender and earliest (min_yob), most recent (max_yob),
     # and most common (mc_yob) year of birth for Chicago and New York City
@@ -309,8 +333,6 @@ def show_data(data, city):
     """
     Ask user to display first 5 rows of raw data.
     If first 5 rows want to be shown, user can decide to see the next 5 rows.
-    If Washington is selected as city, only the first 6 columns are shown as there
-    is no gender and year of birth data available.
 
     """
 
@@ -322,16 +344,11 @@ def show_data(data, city):
         # Print each line separate
         # Iteration to print 5 lines of raw data
         for j in range(j,j+5):
-            # For Washington, only 6 columns are printed
-            if city == 'Washington':
+            # Print columns of raw data
+
                 print('Row {}'.format(j+1))
-                print('[{}]\n'.format(data.T.iloc[1:7,j]))
-            # For Chicago and New York City 8 columns are printed
-            else:
-                print('Row {}'.format(j+1))
-                print('[{}]\n'.format(data.T.iloc[1:9,j]))
-                
-        # Move to next line after printing the last 5 lines of code
+                print('[{}]\n'.format(data.T.iloc[:,j]))
+
         j += 1
         show = input('Would you like to see the next 5 rows of raw data? Y/N \n')
 
