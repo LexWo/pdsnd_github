@@ -10,6 +10,8 @@ bikeshare_2_solution.py code.
 All code changes within the bikeshare_2_solution.py file are listed below:
 1. 12-20-2018: line breaks included in code to improve readability
 
+2. 12-20-2018: modified display of raw data in funktion "show_data".
+                All lines are printed for each city
 
 ### Files used
 README.md

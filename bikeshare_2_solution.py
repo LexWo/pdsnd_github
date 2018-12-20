@@ -320,8 +320,6 @@ def show_data(data, city):
     """
     Ask user to display first 5 rows of raw data.
     If first 5 rows want to be shown, user can decide to see the next 5 rows.
-    If Washington is selected as city, only the first 6 columns are shown as there
-    is no gender and year of birth data available.
 
     """
 
@@ -332,14 +330,10 @@ def show_data(data, city):
     while show.lower() == 'y':
         # Print each line separate
         for j in range(j,j+5):
-            # For Washington, only 6 columns are printed
-            if city == 'Washington':
+            # Print columns of raw data
+
                 print('Row {}'.format(j+1))
-                print('[{}]\n'.format(data.T.iloc[1:7,j]))
-            # For Chicago and New York City 8 columns are printed
-            else:
-                print('Row {}'.format(j+1))
-                print('[{}]\n'.format(data.T.iloc[1:9,j]))
+                print('[{}]\n'.format(data.T.iloc[:,j]))
 
         j += 1
         show = input('Would you like to see the next 5 rows of raw data? Y/N \n')
