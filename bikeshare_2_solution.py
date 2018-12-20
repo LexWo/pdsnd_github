@@ -320,6 +320,7 @@ def show_data(data, city):
     # While user wants to see raw data
     while show.lower() == 'y':
         # Print each line separate
+        # Iteration to print 5 lines of raw data
         for j in range(j,j+5):
             # For Washington, only 6 columns are printed
             if city == 'Washington':
@@ -329,7 +330,8 @@ def show_data(data, city):
             else:
                 print('Row {}'.format(j+1))
                 print('[{}]\n'.format(data.T.iloc[1:9,j]))
-
+                
+        # Move to next line after printing the last 5 lines of code
         j += 1
         show = input('Would you like to see the next 5 rows of raw data? Y/N \n')
 
