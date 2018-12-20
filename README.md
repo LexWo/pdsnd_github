@@ -8,6 +8,8 @@ Project 3 of PDSND: Post your Work on GitHub
 The refactoring branch is used to improve efficiency and readability of the
 bikeshare_2_solution.py code.
 All code changes within the bikeshare_2_solution.py file are listed below:
+1. 12-20-2018: line breaks included in code to improve readability
+
 
 ### Files used
 README.md
